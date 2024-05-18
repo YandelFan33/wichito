@@ -1,0 +1,23 @@
+<?php
+// Recepción de datos
+$apellido = $_POST['apellido'];
+$nombre = $_POST['nombre'];
+$correo = $_POST['correo'];
+$asunto = $_POST['asunto'];
+$consulta = $_POST['consulta'];
+
+// Acción de envío
+$para = 'TU_MAIL_LO_PONES_AQUI';
+$mensaje = "Mensaje de:\n$apellido, $nombre\nCorreo: $correo\nConsulta:\n$consulta\n";
+$desde = "From: $correo";
+
+// Configuración del remitente en el servidor
+ini_set('sendmail_from', 'TU_MAIL_LO_PONES_AQUI');
+
+// Enviar el correo
+if (mail($para, $asunto, $mensaje, $desde)) {
+    echo "Mensaje enviado";
+} else {
+    echo "Error al enviar el mensaje";
+}
+?>
